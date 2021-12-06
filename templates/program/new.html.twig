@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <h1 class="text-center">Créér une nouvelle série</h1>
+    <form >
+        {{ form_errors(form) }}
+        {{ form_start(form) }}
+        {{form_row(form.title, {'label': 'Titre de la série','attr':{'placeholder': 'Titre de la série'}})}}
+        {{form_row(form.poster, {'label': 'Lien de l\'image','attr':{'placeholder': 'Lien de l\image'}})}}
+        {{form_row(form.synopsis, {'label': 'Description','attr':{'placeholder': 'Description'}})}}
+        {{form_row(form.country, {'label': 'Pays','attr':{'placeholder': 'Ajouter un pays'}})}}
+        {{form_row(form.year, {'label': 'Année','attr':{'placeholder': 'Année de sortie'}})}}
+        {{form_row(form.category)}}
+        <button type="submit" class="btn btn-secondary">Ajouter une série</button>
+        {{ form_end(form) }}
+    </form>
+{% endblock %}
