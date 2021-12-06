@@ -24,6 +24,7 @@
                 <td>{{ season.description }}</td>
                 <td>
                     <a href="{{ path('season_show', {'id': season.id}) }}">show</a>
+                    <a href="{{ path('season_edit', {'id': season.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,4 +34,6 @@
         {% endfor %}
         </tbody>
     </table>
+
+    <a href="{{ path('season_new') }}">Create new</a>
 {% endblock %}
