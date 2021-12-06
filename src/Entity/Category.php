@@ -6,11 +6,13 @@ use App\Repository\CategoryRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
 * @ORM\Entity(repositoryClass=CategoryRepository::class)
 */
 class Category
+
 {
 /**
 * @ORM\Id
@@ -21,6 +23,8 @@ class Category
 
 /**
  * @ORM\Column(type="string", length=255)
+ * @Assert\NotBlanck(message="ne me laisse pas tout vide")
+ * @Assert\Length(max="255", maxMessage="La catégorie saisie {{ value }} est trop longue, elle ne devrait pas dépasser {{ limit }} caractères")
  */
     private $name;
 
@@ -77,7 +81,7 @@ public function removeProgram(Program $program): self
 {
     if (!$this->programs->contains($program)) {
         $this->programs->removeElement($program);
-        
+
         if($program->getCategory() === $this) {
             $program->setCategory(null);
         }
